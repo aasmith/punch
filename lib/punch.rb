@@ -4,7 +4,7 @@ class Punch
   VERSION = "1.0.0"
 
   HOST = "adpeet.adp.com"
-  URL  = "https://%s/%s/applications/wpk/html/kronos-logonbody.jsp"
+  URL  = "https://%s/%s/applications/wpk/html/kronos-logonbody.jsp&ESS=true"
 
   attr_reader :url
 
@@ -20,10 +20,33 @@ class Punch
     @agent = Mechanize.new do |a|
       a.ssl_version = :TLSv1
     end
+
+    @page = nil
   end
 
   def url=(url)
     @url = URI.parse url
   end
 
+  def login(username, password)
+    page = @agent.get url
+
+    form = page.form("logonForm") do |f|
+      f["username"] = username
+      f["password"] = password
+      f["authenticateWithSecurityQuestion"] = false
+    end
+
+    @page = form.submit
+  end
+
+  def fetch_timecard
+    p @page
+
+    timecard = @page.link_with(:text => 'My Timecard').click
+
+    p timecard
+  end
+
 end
+
