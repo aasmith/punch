@@ -17,7 +17,8 @@ def init_config
   YAML.dump({
     username: "user@example.org",
     password: "password",
-    client:   "shortcode"
+    client:   "shortcode",
+    transfer: "//DEPT//CODE//"
   }, File.open(CONFIG_FILEPATH, "wb"))
 
   puts "Config has been written to %s, please edit it and re-run." % [
@@ -48,14 +49,18 @@ Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
       options[:quiet] = value
     end
 
-    opt.on("--submit MODE", %i(save approve none), <<-DERP) do |value|
+    opt.on("--pure", "Don't manipulate timesheet") do |value|
+      options[:pure] = value
+    end
+
+    opt.on("--submit MODE", %i(save approve none), <<-DESC) do |value|
 Submission mode:
              save     - saves the timecard remotely.
              approve  - saves and sends the timecard for approval.
              none     - modifies the timecard locally. Nothing is submitted.
 
              Default mode is 'none'
-   DERP
+   DESC
       options[:submit] = value
     end
 
@@ -79,6 +84,7 @@ begin
   home  = punch.login config[:username], config[:password]
 
   timecard = punch.fetch_timecard home
+  timecard.populate(xfer: config[:transfer]) unless options[:pure]
 
   unless quiet
     puts "Your timecard will look like this:"
