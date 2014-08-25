@@ -48,7 +48,14 @@ Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
       options[:quiet] = value
     end
 
-    opt.on("--submit MODE", %i(save approve none), "desc") do |value|
+    opt.on("--submit MODE", %i(save approve none), <<-DERP) do |value|
+Submission mode:
+             save     - saves the timecard remotely.
+             approve  - saves and sends the timecard for approval.
+             none     - modifies the timecard locally. Nothing is submitted.
+
+             Default mode is 'none'
+   DERP
       options[:submit] = value
     end
 
