@@ -24,6 +24,10 @@ missing department code, as set in ~/.punch.yaml.
   $ punch -submit save    # Saves your timecard to ADP.
   $ punch -submit approve # Sends your timecard to be approved.
 
+If you need to share your config will colleagues, remove the password!
+
+  $ grep -v ^:password: ~/.punch.yaml 
+
 == INSTALL:
 
   $ git clone git://github.com/aasmith/punch
