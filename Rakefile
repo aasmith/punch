@@ -13,7 +13,8 @@ require "hoe"
 # Hoe.plugin :rubyforge
 
 Hoe.spec "punch" do
-  developer("Andrew A. Smith", "andy@tinnedfruit.org")
+  developer "Andrew A. Smith", "andy@tinnedfruit.org"
+  license "MIT"
 end
 
 # vim: syntax=ruby
