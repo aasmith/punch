@@ -53,6 +53,10 @@ Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
       options[:pure] = value
     end
 
+    opt.on("--debug", "Enable debug output") do |value|
+      $DEBUG = true
+    end
+
     opt.on("--submit MODE", %i(save approve none), <<-DESC) do |value|
 Submission mode:
              save     - saves the timecard remotely.
@@ -105,5 +109,5 @@ begin
   end
 
 rescue
-  abort $!.message
+  abort $!.message unless $DEBUG
 end
