@@ -1,8 +1,11 @@
-.autotest
+Gemfile
+Gemfile.lock
 History.txt
 Manifest.txt
 README.txt
 Rakefile
 bin/punch
 lib/punch.rb
+test/expected_tcard.txt
+test/tcard.dump
 test/test_punch.rb
