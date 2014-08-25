@@ -1,0 +1,1524 @@
+U:Punch::Timecard[C:Mechanize::Headers{"x-cnection"
+close"	date""Sat, 23 Aug 2014 19:25:43 GMT"x-powered-by"ASP.NET, EeT 6.1"pragma"no-cache"cache-control"no-cache"content-language"en"set-cookie"òWFC_USER=LzQ1ZGM2ZS9hbmRyZXcuYS5zbWl0aEBnZXR0eWltYWdlcy5jb21fw6XDuUUodcKdwpHDnDXDucKmw5o4M8KACz5yXcON; Path=/, TSddef7e=cd72cbfc83f2a8cc8d92fe6aa2f46a889b04c6090a62217f53f8e8392bf07647b2a8b80f6df4e245021c576f60ac0ec5aaff4490; Path=/; HTTPOnly"expires"-1"content-type"text/html;charset=utf-8"	vary" Accept-Encoding, User-Agent"content-encoding"	gzip"content-length"	9481"connection"Keep-Alive"[Í
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Enterprise eTIMEÂ® Professional</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="copyright" content="Copyright 2004-2005 Kronos Incorporated. All rights reserved.">
+<meta name="ui-framework-version" content="ESS">
+<meta name="ui-framework-file" content="wtk/html/ess/project-view.jsp">
+
+<!-- com.kronos.headerbar.css is @deprecated with no replacement -->
+<link id="com.kronos.headerbar.css" href="/company-id/applications/wpk/html/theme/suite-headerbar.css.jsp" media="all" rel="stylesheet" type="text/css">
+<link id="com.kronos.suite.css"  href="/company-id/applications/wpk/html/theme/suite-workspace.css.jsp" media="all" rel="stylesheet" type="text/css">
+<link href="/company-idstatic/applications/wtk/html/ess/css/project-view-timecard.css" media="all" rel="stylesheet" type="text/css">
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/debug.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/event.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/dom-utils.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/visuallanguage/button.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/visuallanguage/data-changed-indicator.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wcb/html/scripts/reporting-context-passing.js" type="text/javascript"></script>
+<script src="/company-id/applications/mss/html/mss.js.jsp" type="text/javascript"></script>
+
+<script src="/company-idstatic/applications/wpk/html/html_v1/scripts/page.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/html_v1/scripts/application.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/html_v1/scripts/notification.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/html_v1/scripts/cursor-handler.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/image.js" type="text/javascript"></script>
+<!-- ui-framework-file: /wpk/html/html_v1/components/html-application.jsp -->
+	<script type="text/javascript">
+	
+
+var theDoc = null;
+
+function checkSaved(theDoc){
+	if(null==theDoc){theDoc=window.document}
+	if(!document.dataManager){return}
+	if(dataManager.hasChanged && !theDoc.skipCheck){
+		theDoc.beenWarned = true
+		
+		if(navigator.appName == 'Microsoft Internet Explorer'){
+			// special event object used by IE only
+			if(event&&event.returnValue){
+				event.returnValue=unescape('The%20unsaved%20changes%20you%20have%20made%20will%20be%20lost%2e')
+			}
+			return true
+		}
+			
+		if(navigator.appName != 'Microsoft Internet Explorer') {
+			if(confirm(unescape('Are%20you%20sure%20you%20want%20to%20navigate%20away%20from%20this%20page%3f\n\nThe%20unsaved%20changes%20you%20have%20made%20will%20be%20lost%2e\n\nPress%20OK%20to%20continue%2c%20or%20Cancel%20to%20stay%20on%20the%20current%20page%2e'))){
+				document.skipCheck=true
+				document.beenWarned=true
+				return true
+			} else {
+				document.beenWarned=false
+				return false
+			}
+		}
+	}
+	return true
+}
+
+function checkExit(theDoc){
+	if(null==theDoc){theDoc=window.document}
+	if(!document.dataManager){return}
+	if(dataManager.hasChanged && !theDoc.skipCheck && !theDoc.beenWarned){
+		alert(unescape('You%20have%20requested%20the%20Browser%20exit%20or%20reload\nthe%20page%20without%20saving%20your%20changes%2e%20The\nchanges%20you%20made%20have%20been%20lost%2e'))
+	}
+}
+
+function checkInvoke(action){
+	if (checkSaved(document)){ 
+		page.disable()
+		invokeAction(action)
+	}
+}
+
+	</script>
+	<script type="text/javascript">
+	<!--
+		var Timecard=new Application('Timecard')
+	//-->
+	</script>
+
+
+
+
+
+
+
+
+
+		
+		
+		
+		
+		
+
+
+
+<script type="text/javascript">
+   // Global variables
+   //TODO Technical Debt: namespace these variables
+   var HELP_PATH = "/company-idstatic/applications/help/ess/en";
+   var HELP_TARGET = "WWHFrame";
+   var HELP_MAIN_PAGE = "/wwhelp.htm";
+   var HELP_QUERY_STRING_HEAD = "context=Workforce_Employee&topic=";
+	 var fileTopic = "tce_project_about_timecard";
+   // Open a new window to contain the requested help resource
+	 document['com.kronos.help'] = {launch:launchESSHelp}
+   function launchESSHelp(){
+		  if(!fileTopic){
+				fileTopic	= document['com.kronos.help'].helpTopic
+			}
+      var helpQueryString = HELP_QUERY_STRING_HEAD + fileTopic;
+      var helpURL = HELP_PATH + HELP_MAIN_PAGE + "?" + helpQueryString; 
+      win = window.open(helpURL,HELP_TARGET,'toolbar,location,directories,status,menubar,scrollbars,resizable');
+   }
+</script>
+
+
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/global.js.jsp" type="text/javascript"></script>
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/select-timeframe.js.jsp" type="text/javascript"></script>
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/timecard-common.js.jsp" type="text/javascript"></script>
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/transfer-search-win.js.jsp" type="text/javascript"></script>
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/unsaved-check.js.jsp" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/dialog-win.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/iteration.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/project-view.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/select-timeframe.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/timecard-common.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/transfer-search-win.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/transfer.js" type="text/javascript"></script>
+<script src="/company-idstatic/applications/wtk/html/ess/scripts/js/unsaved-check.js" type="text/javascript"></script>
+<script src="/company-id/applications/wtk/html/ess/scripts/jsp/timecard.js.jsp" type="text/javascript"></script>
+
+<script type="text/javascript">
+		if(window['com.kronos.timecards.actions']) {
+			window['com.kronos.timecards.actions'].approvalStatement = "",
+			window['com.kronos.timecards.actions'].hasApprovalStatement = false
+		}
+</script>
+
+
+<script type="text/javascript">
+	isTimecardModified = false	
+	var _TIMEFRAME_ID = "1"
+	var _BEGIN_TIMEFRAME_DATE = "8/16/2014"
+	var _END_TIMEFRAME_DATE = "8/31/2014"
+	var _UNSAVED_DATA_BACKGROUND = "#FFCB00"
+	var _TIMECARD_TYPE = "PROJECT"
+	//Following variables are being used in transfer-search-win.js so that these could be supplied to the JavaScript Transfer object
+	var isJobTransferPermitted = false
+	var isAccountTransferPermitted = true
+	var isWorkruleTransferPermitted = true
+	var isManagerB = false
+	var employeeId = 123456789
+	var durationPayCodeNames = new Array()
+	var TIMECARDEMAILADDRESS = "null"
+	var TIMECARDPERSONNAME = "null"
+
+// TODO: BKC - Convert to Scriptlet logic only for the if-statement
+	function overrideWarnings_confirm(){
+		if(false){
+			var msg = 'Override accrual warnings?'
+			if(confirm(msg)){
+				frm = document.forms["com.kronos.wfc.command"]
+				frm["com.kronos.wfc.OverrideWarnings"].value = true
+				exec('Save')
+			}
+		}
+	}
+	function local_init(){
+		global_init();
+		
+// TODO: BKC - Convert to Scriptlet logic only for the if-statement
+		if(false){
+			setImage('redFlag', '/company-idstatic/applications/wtk/html/ess/images/red_flag_small.gif')
+		}
+// TODO: BKC - Convert to Scriptlet logic only for the if-statement
+		if(false){
+			if(document['com.kronos.data-changed-indicator']) {
+				document['com.kronos.data-changed-indicator'].show()
+			}
+			document.hasChanged = true
+		}
+
+// TODO: BKC - Convert to Scriptlet logic only for the if-statement
+		if(false){
+			_APPROVAL_CONFIRM_REQUIRED = false;
+			_APPROVAL_MESSAGE = "null";
+		}
+		overrideWarnings_confirm()
+	}
+	function doDisplayTotalsSummary(){
+		displayTotalsSummary('1', '8/16/2014','8/31/2014',hasChanged)
+	}
+
+// TODO: BKC - Convert to Scriptlet logic only for the if-statement
+	if("null" == "insert_row" && false){
+		hasChanged = true
+		document.hasChanged = true
+	}
+	document.skipCheck = false
+	document.beenWarned = false
+</script>
+</head>
+<body id="kronos" class="Workspace" onload="local_init();" onBeforeUnload="checkSaved(document);" onUnload="checkExit(document); closeAllDialogWins();">
+<form name="pageDisplayForm" action="" method="post">
+
+	<!-- DAR:TODO remove old context field names in favor of standardized names -->
+	<input type="hidden" name="timeframeId" value="1">
+	<input type="hidden" name="endTimeframeDate" value="8/31/2014">
+	<input type="hidden" name="beginTimeframeDate" value="8/16/2014">
+	<input type="hidden" name="employeeId" value="123456789">
+	<input type="hidden" name="employeeIds" value="123456789">
+	
+	<script type="text/javascript">
+			if(document['com.kronos.help']) {
+				document['com.kronos.help'].helpTopic = "tce_project_about_timecard"
+			} else {
+				document['com.kronos.help'] = {helpTopic:"tce_project_about_timecard"}
+			}
+		</script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/header.tag -->
+
+
+
+
+
+
+
+
+
+
+<!-- ui-framework-file: wpk/html/visuallanguage/header.jsp -->
+<table class="HeaderPanel ControlLayout">
+	<tr>
+		<td class="Info">
+			<h1>
+				Timecard
+			</h1>
+				
+		</td>
+		
+		<td class="Context">
+			<!-- ui-framework-file: /tags/wpk/kvl/context.tag -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type = "text/javascript">
+window['com.kronos.context'] = { 
+	onPersonChange: function (select) {
+		var form = getAncestorByTagName(select, 'FORM')
+		if(form){
+			form.submit()
+		}		
+	},
+	onTimeperiodChange: function (select) {
+		var form = getAncestorByTagName(select, 'FORM')
+		if(form){
+			form.submit()
+		}
+	},
+	getContext: function () {
+		var context = {}
+		context['timeperiodId'] = this.getTimeperiodId ()
+		context['timeperiodDescription'] = this.getTimeperiodDescription ()
+		context['timeperiodEndDate'] = this.getTimeperiodEndDate ()
+		context['timeperiodStartDate'] = this.getTimeperiodStartDate ()
+		context['personId'] = this.getPersonId ()
+		context['personFullName'] = this.getPersonFullName ()
+		context['personIdList'] = this.getPersonIdList ()
+		return context
+	},
+	createQueryString: function (appendToOptional) {
+		appendToOptional = (appendToOptional? appendToOptional+'&': '?')
+		var context = this.getContext()
+		var parameters = new Array(0)
+		for(var name in context){
+			parameters[parameters.length++] = name+'='+context[name]
+		}
+		return appendToOptional + parameters.join('&')
+	},
+	getTimeperiodId: function () {
+		var select = $('com.kronos.context:timeperiod-id')
+		if(select){
+			if('SELECT' == select.tagName){			
+				return select.options[select.selectedIndex].value
+			}
+			return select.value
+		}
+	},
+	getTimeperiodDescription: function () {
+		var select = $('com.kronos.context:timeperiod-id')
+		if(select){
+			if('SELECT' == select.tagName){			
+				return select.options[select.selectedIndex].text
+			}
+			return select.getAttribute('timeperiodDescription')
+		}
+	},
+	getTimeperiodEndDate: function () {
+		return $('com.kronos.context:timeperiod-end-date').value
+	},
+	getTimeperiodStartDate: function () {
+		return $('com.kronos.context:timeperiod-start-date').value
+	},
+	getPersonId: function () {
+		var select = $('com.kronos.context:person-id')
+		if(select){
+			if('SELECT' == select.tagName){
+				return select.options[select.selectedIndex].value
+			}
+			return select.value
+		}
+	},
+	getPersonFullName: function () {
+		var select = $('com.kronos.context:person-id')
+		if(select){
+			if('SELECT' == select.tagName){
+				return select.options[select.selectedIndex].text
+			}
+			return select.getAttribute('personFullName')
+		}
+	},
+	getPersonIdList: function () {
+		return $('com.kronos.context:person-id-list').value
+	},
+	gotoPreviousPerson: function () {
+		update($('com.kronos.context:person-id'))
+		function update (select) {
+			if(select){
+				var selectedIndex = select.selectedIndex - 1
+				if(selectedIndex < 0){
+					selectedIndex = select.options.length - 1
+				}
+				select.selectedIndex = selectedIndex
+				select.onchange()
+			}
+		}
+	},
+	gotoNextPerson: function () {
+		update($('com.kronos.context:person-id'))
+		function update (select) {
+			if(select){
+				var selectedIndex = select.selectedIndex + 1
+				if(selectedIndex >= select.options.length){
+					 selectedIndex = 0
+				}
+				select.selectedIndex = selectedIndex
+				select.onchange()
+			}
+		}
+	},
+	applyTimeperiod: function () {
+		var select = $('com.kronos.context:timeperiod-id')
+		if(select){
+			select.setAttribute('com.kronos.context.apply-timeperiod', true)
+			select.onchange()
+		}
+	},
+	updateTimeperiod: function (select) {
+		if(select){
+			if(select.getAttribute('com.kronos.context.apply-timeperiod')){
+				// we are being invoked by the apply button
+				select.removeAttribute('com.kronos.context.apply-timeperiod')
+				// cause onTimeperiodChange event handler to fire
+				return true
+			}
+			var tr = getAncestorByTagName(select, 'TR')
+			if(tr){
+				var value = select.options[select.selectedIndex].value
+				if ('9'==value){
+					// show start and end dates
+					show('CTShowStartDate')
+					show('CTShowEndDate')
+				}else if('11'==value){
+					// show start date only
+					show('CTShowStartDate')
+					hide('CTShowEndDate')
+				}else{
+					hide('CTShowStartDate')
+					hide('CTShowEndDate')
+					// cause onTimeperiodChange event handler to fire
+					return true 
+				}
+			}
+			// prevent onTimeperiodChange event because now the 
+			// user has to press apply button
+			return false
+		}
+		function show(id){
+			tarClassName(tr, id, true)
+		}
+		function hide(id){
+			tarClassName(tr, id, false)
+		}
+	},
+	setPersonId: function (id) {
+		var select  = $("com.kronos.context:person-id");
+		var select2 = $("com.kronos.context:personidselect2");
+		if(select) { select.value  = id; }
+		if(select2){ select2.value = id; }
+	}
+}
+
+</script>
+<style>
+/* DAR:TODO move to suite css */
+#kronos table.ContextPanel .CTDisplay,
+#kronos table.ContextPanel tr.CTShowStartDate .CTApply,
+#kronos table.ContextPanel tr.CTShowStartDate .CTStartDate,
+#kronos table.ContextPanel tr.CTShowEndDate .CTApply,
+#kronos table.ContextPanel tr.CTShowEndDate .CTEndDate {
+	display:inline;
+}
+#kronos table.ContextPanel .CTApply,
+#kronos table.ContextPanel .CTEndDate,
+#kronos table.ContextPanel .CTStartDate,
+#kronos table.ContextPanel tr.CTShowStartDate .CTDisplay,
+#kronos table.ContextPanel tr.CTShowEndDate .CTDisplay {
+	display:none;
+}
+#kronos table.ContextPanel tr.CPerson td a {
+	margin:0;
+	vertical-align: bottom;
+}
+#kronos table.ContextPanel tr.CTimeperiod {
+	white-space:nowrap;
+}
+
+#kronos table.ContextPanel tr.CTimeperiod .CTEndDate input,
+#kronos table.ContextPanel tr.CTimeperiod .CTStartDate input{
+	width:75px;
+}
+
+</style>
+<table class = "ContextPanel ControlLayout" cellpadding="0" cellspacing="0">
+
+	<tr style="display:none">
+		<td>
+			<input id="com.kronos.context:person-id-list" name="personIdList" value="123456789" type="hidden">
+		</td>
+	</tr>
+
+	
+		<!-- ui-framework-file: /tags/wpk/kvl/context-person.tag -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+<tr class = "CPerson">
+	<th style = "white-space:nowrap;">
+		<label for="com.kronos.context:person-id">Person & Id</label>
+	</th>
+
+  
+  
+	<td>
+	
+		<input id = "com.kronos.context:person-id" type = "hidden" value = "123456789" xmlns:personality="com.kronos.wfc.commonapp.people.business.personality.Personality" personality:fullName="Smith, Andrew">
+		Smith, Andrew (DJL003107)
+	
+	</td>
+	<td>&nbsp;</td>
+  
+
+</tr>
+
+	
+
+	
+	
+		
+		
+		
+			<!-- ui-framework-file: /tags/wpk/kvl/context-timeperiod.tag -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<tr class = "CTimeperiod">
+		<th style = "white-space:nowrap;">
+			<label>Time Period</label>
+		</th>
+		<td colspan = "2">
+			<select id = "com.kronos.context:timeperiod-id" name = "timeperiodId" onchange = "if(window['com.kronos.context'].updateTimeperiod(this)){window[&#039;com.kronos.timecards.actions&#039;].doRefresh()}">
+			<optgroup label = "------------------------------------&nbsp;">
+			
+			
+			
+				
+				
+					<option value = "0" >Previous Pay Period</option>
+				
+			
+			
+			
+				
+				
+					<option value = "1"  selected = "selected">Current Pay Period</option>
+				
+			
+			
+			
+				
+				
+					<option value = "2" >Next Pay Period</option>
+				
+			
+			
+			
+				
+					</optgroup><optgroup label = "------------------------------------&nbsp;">
+				
+				
+			
+			
+			
+				
+				
+					<option value = "3" >Previous Schedule Period</option>
+				
+			
+			
+			
+				
+				
+					<option value = "4" >Current Schedule Period</option>
+				
+			
+			
+			
+				
+				
+					<option value = "5" >Next Schedule Period</option>
+				
+			
+			
+			
+				
+					</optgroup><optgroup label = "------------------------------------&nbsp;">
+				
+				
+			
+			
+			
+				
+				
+					<option value = "13" >Today</option>
+				
+			
+			
+			
+				
+				
+					<option value = "8" >Yesterday</option>
+				
+			
+			
+			
+				
+				
+					<option value = "6" >Week to Date</option>
+				
+			
+			
+			
+				
+				
+					<option value = "7" >Last Week</option>
+				
+			
+			
+			
+				
+					</optgroup><optgroup label = "------------------------------------&nbsp;">
+				
+				
+			
+			
+			
+				
+				
+					<option value = "11" >Specific Date</option>
+				
+			
+			
+			
+				
+				
+					<option value = "9" >Range of Dates</option>
+				
+			
+			
+			</optgroup>
+			</select>
+			<span class = "CTDisplay">8/16/2014 - 8/31/2014</span>
+			<span class = "CTStartDate">
+				<input type="text" id="com.kronos.context:timeperiod-start-date" name="timeperiodStartDate" value="8/23/2014">
+				<!-- ui-framework-file: /tags/wpk/kvl/date-selector-popup.tag -->
+
+
+
+
+	
+	<!-- date selector required libraries -->
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-id/applications/wpk/html/visuallanguage/variables.js.jsp" type="text/javascript"></script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/event.js" type="text/javascript"></script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-idstatic/applications/wpk/html/js/com/kronos/dom-utils.js" type="text/javascript"></script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-id/applications/wpk/html/html_v1/scripts/calendar.js.jsp" type="text/javascript"></script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-idstatic/applications/wpk/html/html_v1/scripts/dialog-win.js" type="text/javascript"></script>
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-idstatic/applications/wpk/html/visuallanguage/date-select-popup.js" type="text/javascript"></script>
+
+
+<img id="com.kronos.context:timeperiod-start-date_calIcon" class="Button" title="Click here to select a date from the calendar." src="/company-idstatic/applications/wpk/themes/basic/icons/actions/calendar.png" onclick="window['com.kronos.date-selector'].show('com.kronos.context:timeperiod-start-date')" alt="Click here to select a date from the calendar.">
+
+			</span>
+			<span class = "CTEndDate">
+				<input type="text" id="com.kronos.context:timeperiod-end-date" name="timeperiodEndDate" value="8/23/2014">
+				<!-- ui-framework-file: /tags/wpk/kvl/date-selector-popup.tag -->
+
+
+
+
+<img id="com.kronos.context:timeperiod-end-date_calIcon" class="Button" title="Click here to select a date from the calendar." src="/company-idstatic/applications/wpk/themes/basic/icons/actions/calendar.png" onclick="window['com.kronos.date-selector'].show('com.kronos.context:timeperiod-end-date')" alt="Click here to select a date from the calendar.">
+
+			</span>
+		</td>
+		<td>
+			<span class = "CTApply">
+				<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+	
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+
+
+	<!-- ui-framework-file: /tags/wpk/kvl/script.tag -->
+<script src="/company-idstatic/applications/wpk/html/visuallanguage/button.js" type="text/javascript"></script>
+
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.context&#039;].applyTimeperiod()">
+	
+	
+			
+			<a id="com.kronos.context:timeperiod-apply-button" href="#" onclick="return false;" title="">Apply</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+			</span>
+		</td>
+	</tr>
+
+		
+	
+
+	
+
+	
+
+	
+	
+
+	
+	
+
+	
+
+</table>
+
+		</td>
+		
+	</tr>
+</table>
+
+	
+	
+	
+	
+
+	
+	
+
+
+
+	
+	
+	
+
+	<!-- used by send email action -->
+	<div style = "display:none">
+		<a id = "com.kronos.send-email" href = "#"></a>
+	</div>
+	<div class="ActionBar">
+		<table class="ControlLayout" cellpadding="0" cellspacing="0">
+			<tr>
+				
+					<td>
+						<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doSave()">
+	
+	
+			
+			<a id="ess.saveButton.Label" href="#" onclick="return false;" title="">Save</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+					</td>
+					
+					<td>
+						<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doApprove()">
+	
+	
+			
+			<a id="ess.approveButton.Label" href="#" onclick="return false;" title="">Approve</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+					</td>
+					
+					<td>
+						<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doShowCommentForActiveCell()">
+	
+	
+			
+			<a id="ess.commentsButton.Label" href="#" onclick="return false;" title="">Comments<img 
+				class="WithElipse" border="0" alt="-->" src="/company-idstatic/applications/wpk/themes/basic/icons/button/button-elipses.png"></a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+					</td>
+					
+				<td>
+					<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doShowPrimaryAccount()">
+	
+	
+			
+			<a id="wfc.wfp.source.html.ess.timecards.homeAccount.Label" href="#" onclick="return false;" title="">Primary Account</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+				</td>
+				<td>
+					<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doShowTotalsSummary()">
+	
+	
+			
+			<a id="ess.totalsSummary.Label" href="#" onclick="return false;" title="">Totals Summary</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+				</td>
+				<td>
+					<!-- ui-framework-file: /tags/wpk/kvl/button.tag -->
+
+<table class="Button" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="BL">
+			<div></div>
+		</td>
+	
+	
+	
+		<td class="BM" onmouseover="Button_onmouseover(this)" onclick="window[&#039;com.kronos.timecards.actions&#039;].doRefresh()">
+	
+	
+			
+			<a id="ess.refreshButton.Label" href="#" onclick="return false;" title="">Refresh</a>
+			
+		</td>
+		<td class="BR">
+			<div></div>
+		</td>
+	</tr>
+</table>
+
+				</td>
+				
+			</tr>
+		</table>
+	</div>
+	
+	
+	
+         <script type="text/javascript">
+          function gotoAdvancedReportPage() {
+             var ctxMgr = new AdvRptCtxManager();
+             var instance = "/company-id"; 
+             var employeeIds =  document.getElementById("com.kronos.context:person-id-list").value;            
+             var timeframeId = document.getElementById("com.kronos.context:timeperiod-id").value;
+             var fromTimeframe = document.getElementById("com.kronos.context:timeperiod-start-date").value; 
+             var toTimeframe = document.getElementById("com.kronos.context:timeperiod-end-date").value;
+             ctxMgr.goToAdvancedReports(instance, AdvRptCtxConstants.WTK, timeframeId, fromTimeframe, toTimeframe, employeeIds);
+         }
+         </script>  
+
+
+
+
+
+
+
+<!-- ui-framework-file: /tags/wpk/kvl/rsr-webpart.tag -->
+
+<table class="WebPart" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="WPContent">
+	<table class="first-child Tabular Timecard" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+					<th title="" class=" ActionCell">Add<br/>Row</th>
+					<th title="" class=" Paycode">Pay Code</th>
+					<th title="" class=" Transfer">Transfer</th>
+					<th title="" class=" Day"><div class="" >Sun<br>8/10</div></th>
+					<th title="" class=" Day"><div class="" >Mon<br>8/11</div></th>
+					<th title="" class=" Day"><div class="" >Tue<br>8/12</div></th>
+					<th title="" class=" Day"><div class="" >Wed<br>8/13</div></th>
+					<th title="" class=" Day"><div class="" >Thu<br>8/14</div></th>
+					<th title="" class=" Day"><div class="" >Fri<br>8/15</div></th>
+					<th title="" class=" Day"><div class="" >Sat<br>8/16</div></th>
+					<th title="" class=" Total last-child"><img alt="" src="/company-idstatic/applications/wtk/html/ess/images/cellwraps/blank.gif" width="11" height="13" name="redFlag0">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		
+			
+			<tr class="">
+			
+							<td class="ActionCell">
+								<div>
+									<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#RowInsertIcon" title="Add a Row" onclick="return false"><img id="" class="RowInsertIcon" alt="" title="Add a Row" border="0" onclick="insertRow(&#039;T0R0C1&#039;)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+								</div>
+							</td>
+				<td  class="Paycode"><div title="" class="">
+<script type="text/javascript">
+	var T0R0C2_commands = new Array()
+	function T0R0C2_onchange(select){
+		eval(T0R0C2_commands[select.selectedIndex])
+		update(select);
+	}
+</script>
+<select size='0' name='T0R0C2' onchange='T0R0C2_onchange(this)'><option value='Regular' selected>Regular</option><option value='Paid Time Off'>Paid Time Off</option><option value='Personal Holiday'>Personal Holiday</option><option value='EIB'>EIB</option><option value='Bereavement'>Bereavement</option><option value='Civic Duty'>Civic Duty</option><option value='Unpaid Time Off'>Unpaid Time Off</option></select></div></td>
+				
+								<td class="Transfer">
+									<div title="" class=" Date">
+   										<input type="text" onfocus="tarClassName(this,'Active',1)" onblur="tarClassName(this,'Active',0)" name="T0R0C3" size="18" value="" title="" onchange="update(this);this.title=this.value;" maxlength="255">
+   										<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#LookupIcon" title="Select account entries for transfer" onclick="return false"><img id="" class="LookupIcon" alt="" title="Select account entries for transfer" border="0" onclick="document.skipCheck=true; openSearchWinForProjectView(document.forms.pageDisplayForm.T0R0C3, false, true, true, false, 123456789, 0, 0, durationPayCodeNames)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+									   </div>
+								</td>
+								
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T0R0C10' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  id="weekTotal_2014810" class="last-child Number Total"><div title="" class="">0:00</div></td>
+				
+		</tr>
+
+	</tbody>
+	<tfoot>
+	
+	<tr class=" Even">
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td id="dayTotal_2014810" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014811" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014812" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014813" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014814" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014815" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014816" class="Number"><span>0:00</span></td>
+				
+				<td id="weekGrandTotal_2014810" class="last-child Number"><span>0:00</span></td>
+				
+	</tr>
+		<tr class="TablePaginator"><td colspan="299" class="last-child"><div>&nbsp;</div></td></tr>
+	</tfoot>
+
+</table>
+</td>
+		<td class="WPRsRRight"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-top-right-corner.png"></td>
+	</tr>
+	<tr>
+		<td class="WPRsRLeft"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-bottom-left-corner.png"></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+
+
+
+
+<!-- ui-framework-file: /tags/wpk/kvl/rsr-webpart.tag -->
+
+<table class="WebPart" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="WPContent">
+	<table class="first-child Tabular Timecard" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+					<th title="" class=" ActionCell">Add<br/>Row</th>
+					<th title="" class=" Paycode">Pay Code</th>
+					<th title="" class=" Transfer">Transfer</th>
+					<th title="" class=" Day"><div class="" >Sun<br>8/17</div></th>
+					<th title="" class=" Day"><div class="" >Mon<br>8/18</div></th>
+					<th title="" class=" Day"><div class="" >Tue<br>8/19</div></th>
+					<th title="" class=" Day"><div class="" >Wed<br>8/20</div></th>
+					<th title="" class=" Day"><div class="" >Thu<br>8/21</div></th>
+					<th title="" class=" Day"><div class="" >Fri<br>8/22</div></th>
+					<th title="" class=" Day"><div class="" >Sat<br>8/23</div></th>
+					<th title="" class=" Total last-child"><img alt="" src="/company-idstatic/applications/wtk/html/ess/images/cellwraps/blank.gif" width="11" height="13" name="redFlag1">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		
+			
+			<tr class="">
+			
+							<td class="ActionCell">
+								<div>
+									<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#RowInsertIcon" title="Add a Row" onclick="return false"><img id="" class="RowInsertIcon" alt="" title="Add a Row" border="0" onclick="insertRow(&#039;T1R0C1&#039;)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+								</div>
+							</td>
+				<td  class="Paycode"><div title="" class="">
+<script type="text/javascript">
+	var T1R0C2_commands = new Array()
+	function T1R0C2_onchange(select){
+		eval(T1R0C2_commands[select.selectedIndex])
+		update(select);
+	}
+</script>
+<select size='0' name='T1R0C2' onchange='T1R0C2_onchange(this)'><option value='Regular' selected>Regular</option><option value='Paid Time Off'>Paid Time Off</option><option value='Personal Holiday'>Personal Holiday</option><option value='EIB'>EIB</option><option value='Bereavement'>Bereavement</option><option value='Civic Duty'>Civic Duty</option><option value='Unpaid Time Off'>Unpaid Time Off</option></select></div></td>
+				
+								<td class="Transfer">
+									<div title="" class=" Date">
+   										<input type="text" onfocus="tarClassName(this,'Active',1)" onblur="tarClassName(this,'Active',0)" name="T1R0C3" size="18" value="" title="" onchange="update(this);this.title=this.value;" maxlength="255">
+   										<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#LookupIcon" title="Select account entries for transfer" onclick="return false"><img id="" class="LookupIcon" alt="" title="Select account entries for transfer" border="0" onclick="document.skipCheck=true; openSearchWinForProjectView(document.forms.pageDisplayForm.T1R0C3, false, true, true, false, 123456789, 1, 0, durationPayCodeNames)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+									   </div>
+								</td>
+								
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C4' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C5' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C6' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C7' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C8' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C9' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T1R0C10' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  id="weekTotal_2014817" class="last-child Number Total"><div title="" class="">40:00</div></td>
+				
+		</tr>
+
+	</tbody>
+	<tfoot>
+	
+	<tr class=" Even">
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td id="dayTotal_2014817" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014818" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014819" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014820" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014821" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014822" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014823" class="Number"><span>0:00</span></td>
+				
+				<td id="weekGrandTotal_2014817" class="last-child Number"><span>40:00</span></td>
+				
+	</tr>
+		<tr class="TablePaginator"><td colspan="299" class="last-child"><div>&nbsp;</div></td></tr>
+	</tfoot>
+
+</table>
+</td>
+		<td class="WPRsRRight"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-top-right-corner.png"></td>
+	</tr>
+	<tr>
+		<td class="WPRsRLeft"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-bottom-left-corner.png"></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+
+
+
+
+<!-- ui-framework-file: /tags/wpk/kvl/rsr-webpart.tag -->
+
+<table class="WebPart" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="WPContent">
+	<table class="first-child Tabular Timecard" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+					<th title="" class=" ActionCell">Add<br/>Row</th>
+					<th title="" class=" Paycode">Pay Code</th>
+					<th title="" class=" Transfer">Transfer</th>
+					<th title="" class=" Day"><div class="" >Sun<br>8/24</div></th>
+					<th title="" class=" Day"><div class="" >Mon<br>8/25</div></th>
+					<th title="" class=" Day"><div class="" >Tue<br>8/26</div></th>
+					<th title="" class=" Day"><div class="" >Wed<br>8/27</div></th>
+					<th title="" class=" Day"><div class="" >Thu<br>8/28</div></th>
+					<th title="" class=" Day"><div class="" >Fri<br>8/29</div></th>
+					<th title="" class=" Day"><div class="" >Sat<br>8/30</div></th>
+					<th title="" class=" Total last-child"><img alt="" src="/company-idstatic/applications/wtk/html/ess/images/cellwraps/blank.gif" width="11" height="13" name="redFlag2">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		
+			
+			<tr class="">
+			
+							<td class="ActionCell">
+								<div>
+									<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#RowInsertIcon" title="Add a Row" onclick="return false"><img id="" class="RowInsertIcon" alt="" title="Add a Row" border="0" onclick="insertRow(&#039;T2R0C1&#039;)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+								</div>
+							</td>
+				<td  class="Paycode"><div title="" class="">
+<script type="text/javascript">
+	var T2R0C2_commands = new Array()
+	function T2R0C2_onchange(select){
+		eval(T2R0C2_commands[select.selectedIndex])
+		update(select);
+	}
+</script>
+<select size='0' name='T2R0C2' onchange='T2R0C2_onchange(this)'><option value='Regular' selected>Regular</option><option value='Paid Time Off'>Paid Time Off</option><option value='Personal Holiday'>Personal Holiday</option><option value='EIB'>EIB</option><option value='Bereavement'>Bereavement</option><option value='Civic Duty'>Civic Duty</option><option value='Unpaid Time Off'>Unpaid Time Off</option></select></div></td>
+				
+								<td class="Transfer">
+									<div title="" class=" Date">
+   										<input type="text" onfocus="tarClassName(this,'Active',1)" onblur="tarClassName(this,'Active',0)" name="T2R0C3" size="18" value="" title="" onchange="update(this);this.title=this.value;" maxlength="255">
+   										<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#LookupIcon" title="Select account entries for transfer" onclick="return false"><img id="" class="LookupIcon" alt="" title="Select account entries for transfer" border="0" onclick="document.skipCheck=true; openSearchWinForProjectView(document.forms.pageDisplayForm.T2R0C3, false, true, true, false, 123456789, 2, 0, durationPayCodeNames)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+									   </div>
+								</td>
+								
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C4' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C5' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C6' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C7' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C8' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C9' size='5' value='8:00' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=""><input type='text' name='T2R0C10' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  id="weekTotal_2014824" class="last-child Number Total"><div title="" class="">40:00</div></td>
+				
+		</tr>
+
+	</tbody>
+	<tfoot>
+	
+	<tr class=" Even">
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td id="dayTotal_2014824" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_2014825" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014826" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014827" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014828" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014829" class="Number"><span>8:00</span></td>
+				
+				<td id="dayTotal_2014830" class="Number"><span>0:00</span></td>
+				
+				<td id="weekGrandTotal_2014824" class="last-child Number"><span>40:00</span></td>
+				
+	</tr>
+		<tr class="TablePaginator"><td colspan="299" class="last-child"><div>&nbsp;</div></td></tr>
+	</tfoot>
+
+</table>
+</td>
+		<td class="WPRsRRight"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-top-right-corner.png"></td>
+	</tr>
+	<tr>
+		<td class="WPRsRLeft"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-bottom-left-corner.png"></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+
+
+
+
+<!-- ui-framework-file: /tags/wpk/kvl/rsr-webpart.tag -->
+
+<table class="WebPart" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="WPContent">
+	<table class="first-child Tabular Timecard" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+					<th title="" class=" ActionCell">Add<br/>Row</th>
+					<th title="" class=" Paycode">Pay Code</th>
+					<th title="" class=" Transfer">Transfer</th>
+					<th title="" class=" Day"><div class="" >Sun<br>8/31</div></th>
+					<th title="" class=" Day"><div class="" >Mon<br>9/01</div></th>
+					<th title="" class=" Day"><div class="" >Tue<br>9/02</div></th>
+					<th title="" class=" Day"><div class="" >Wed<br>9/03</div></th>
+					<th title="" class=" Day"><div class="" >Thu<br>9/04</div></th>
+					<th title="" class=" Day"><div class="" >Fri<br>9/05</div></th>
+					<th title="" class=" Day"><div class="" >Sat<br>9/06</div></th>
+					<th title="" class=" Total last-child"><img alt="" src="/company-idstatic/applications/wtk/html/ess/images/cellwraps/blank.gif" width="11" height="13" name="redFlag3">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		
+			
+			<tr class="">
+			
+							<td class="ActionCell">
+								<div>
+									<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#RowInsertIcon" title="Add a Row" onclick="return false"><img id="" class="RowInsertIcon" alt="" title="Add a Row" border="0" onclick="insertRow(&#039;T3R0C1&#039;)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+								</div>
+							</td>
+				<td  class="Paycode"><div title="" class="">
+<script type="text/javascript">
+	var T3R0C2_commands = new Array()
+	function T3R0C2_onchange(select){
+		eval(T3R0C2_commands[select.selectedIndex])
+		update(select);
+	}
+</script>
+<select size='0' name='T3R0C2' onchange='T3R0C2_onchange(this)'><option value='Regular' selected>Regular</option><option value='Paid Time Off'>Paid Time Off</option><option value='Personal Holiday'>Personal Holiday</option><option value='EIB'>EIB</option><option value='Bereavement'>Bereavement</option><option value='Civic Duty'>Civic Duty</option><option value='Unpaid Time Off'>Unpaid Time Off</option></select></div></td>
+				
+								<td class="Transfer">
+									<div title="" class=" Date">
+   										<input type="text" onfocus="tarClassName(this,'Active',1)" onblur="tarClassName(this,'Active',0)" name="T3R0C3" size="18" value="" title="" onchange="update(this);this.title=this.value;" maxlength="255">
+   										<!-- ui-framework-file: /tags/wpk/kvl/icon.tag -->
+
+<a href="#LookupIcon" title="Select account entries for transfer" onclick="return false"><img id="" class="LookupIcon" alt="" title="Select account entries for transfer" border="0" onclick="document.skipCheck=true; openSearchWinForProjectView(document.forms.pageDisplayForm.T3R0C3, false, true, true, false, 123456789, 3, 0, durationPayCodeNames)" src="/company-idstatic/applications/wpk/html/images/blank.gif"></a>
+
+									   </div>
+								</td>
+								
+				<td  class=" Day"><div title="" class=""><input type='text' name='T3R0C4' size='5' value='' title='' onChange='update(this)' onFocus='tarClassName(this,"Active",1);commentableCellFocused(this)' onBlur='tarClassName(this,"Active",0);' maxLength='20'></input></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  class=" Day"><div title="" class=" ReadOnly"><input type="text" disabled="disabled" name="" size="5" maxlength="20" value=" " ></div></td>
+				
+				<td  id="weekTotal_2014831" class="last-child Number Total"><div title="" class="">0:00</div></td>
+				
+		</tr>
+
+	</tbody>
+	<tfoot>
+	
+	<tr class=" Even">
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td class="Number"><span>&nbsp;</span></td>
+				
+				<td id="dayTotal_2014831" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201491" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201492" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201493" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201494" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201495" class="Number"><span>0:00</span></td>
+				
+				<td id="dayTotal_201496" class="Number"><span>0:00</span></td>
+				
+				<td id="weekGrandTotal_2014831" class="last-child Number"><span>0:00</span></td>
+				
+	</tr>
+		<tr class="TablePaginator"><td colspan="299" class="last-child"><div>&nbsp;</div></td></tr>
+	</tfoot>
+
+</table>
+</td>
+		<td class="WPRsRRight"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-top-right-corner.png"></td>
+	</tr>
+	<tr>
+		<td class="WPRsRLeft"><img alt="" width="6" height="6" src="/company-idstatic/applications/wpk/themes/basic/icons/webpart/webpart-bottom-left-corner.png"></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+
+</form>
+
+
+
+
+<!-- DAR:TODO look at differences between tmiecardlaunch.do and calendarlaunch.do -->
+<form id="com.kronos.timecards:pageCommandForm" name="com.kronos.wfc.command" action="/company-id/applications/mss/esstimecard.do" method="post">
+	<input type="hidden" name="employeeId" value="">
+	<input type="hidden" name="employeeIds" value="">
+	<input type="hidden" name="timeframeId" value="">
+	<input type="hidden" name="beginTimeframeDate" value="">
+	<input type="hidden" name="endTimeframeDate" value="">
+	<input type="hidden" name="editableStartDate" value="8/23/2014" >
+	<input type="hidden" name="editableEndDate" value="8/23/2014" >
+	
+	<input type="hidden" name="personIds" value="">
+	<input type="hidden" name="beginningDate" value="">
+	<input type="hidden" name="endDate" value="">
+
+	<input type="hidden" name="com.kronos.wfc.OverrideWarnings">
+	<input type="hidden" name="com.kronos.wfc.ACTION">
+	<input type="hidden" name="com.kronos.wfc.CMD_DATA">
+	<input type="hidden" name="com.kronos.wfc.CMD_PARAM">
+	<input type="hidden" name="newCommentIDs">
+</form>
+
+<form name = "reportForm" method = "POST" action = "/company-id/applications/mss/reportlaunch.do" target = "_self">
+	<input type = "hidden" name = 'url' value = "Reports">
+	<input type = "hidden" name = "fromGenie" value = "false">
+	<input type = "hidden" name = "fromTimecard" value = "true">
+	<input type = "hidden" name = "fromCalendar" value = "false">
+	<input type = "hidden" name = "employeeIds" value = "">
+	<!-- DAR:TODO these are dynamic and need to be update by js -->
+	<input type = "hidden" name = "timeframeId" value = "">
+	<input type = "hidden" name = "hyperFindId" value = "">
+	<input type = "hidden" name = "beginningDate" value = "">
+	<input type = "hidden" name = "endDate" value = "">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+	
+	Timecard.hasChanged=false
+	if(document.dataManager && Timecard.hasChanged){
+		dataManager._changed()
+	}
+	document.notifications=new Array()
+        document.page.enable()
+        document.cursor_handler.cursorDefault()
+        window.focus()
+        if ('false' == 'false'){
+            page.DISABLE_PAGE_OVERRIDE=true
+        }
+
+        if (!page.DISABLE_PAGE_OVERRIDE){
+            if (opener){
+                if (opener.page.disable){
+                    opener.page.disable()
+                }
+            }
+        }
+
+//-->
+</script>
+
+</body>
+</html>
+
+

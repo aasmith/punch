@@ -1,0 +1,37 @@
+Timecard for Employee 123456789 (2014-08-16-2014-08-31)
+
+Week 0
+------
+Dept: Regular
+Xfer: -
+Sat 2014-08-16: None
+
+Week 1
+------
+Dept: Regular
+Xfer: -
+Sun 2014-08-17: None
+Mon 2014-08-18: 8:00
+Tue 2014-08-19: 8:00
+Wed 2014-08-20: 8:00
+Thu 2014-08-21: 8:00
+Fri 2014-08-22: 8:00
+Sat 2014-08-23: None
+
+Week 2
+------
+Dept: Regular
+Xfer: -
+Sun 2014-08-24: None
+Mon 2014-08-25: 8:00
+Tue 2014-08-26: 8:00
+Wed 2014-08-27: 8:00
+Thu 2014-08-28: 8:00
+Fri 2014-08-29: 8:00
+Sat 2014-08-30: None
+
+Week 3
+------
+Dept: Regular
+Xfer: -
+Sun 2014-08-31: None
