@@ -24,6 +24,14 @@ missing department code, as set in ~/.punch.yaml.
   $ punch -submit save    # Saves your timecard to ADP.
   $ punch -submit approve # Sends your timecard to be approved.
 
+== INSTALL:
+
+  $ git clone git://github.com/aasmith/punch
+  $ cd punch
+  $ bundle install
+  $ rake gem
+  $ gem install pkg/punch*.gem
+
 == REQUIREMENTS:
 
 * mechanize
