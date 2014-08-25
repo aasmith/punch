@@ -1,3 +1,90 @@
 #!/usr/bin/env ruby
 
-abort "you need to write me"
+require "yaml"
+require "optparse"
+
+require "punch"
+
+CONFIG_FILEPATH = File.join(Gem.user_home, ".punch.yaml")
+
+def config
+  YAML.load File.read(CONFIG_FILEPATH)
+rescue Errno::ENOENT
+  nil
+end
+
+def init_config
+  YAML.dump({
+    username: "user@example.org",
+    password: "password",
+    client:   "shortcode"
+  }, File.open(CONFIG_FILEPATH, "wb"))
+end
+
+def parse_options
+  options = {
+    quiet: false,
+    submit: :none
+  }
+
+  opts = OptionParser.new do |opt|
+    opt.program_name = File.basename $0
+    opt.version = Punch::VERSION
+    opt.banner = <<-EOF
+Usage: #{opt.program_name} [OPTION]...
+Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
+    EOF
+
+    opt.summary_indent = ""
+    opt.separator nil
+
+    opt.on("--quiet", "Don't display timesheet") do |value|
+      options[:quiet] = value
+    end
+
+    opt.on("--submit MODE", %i(save approve none), "desc") do |value|
+      options[:submit] = value
+    end
+
+  end
+
+  opts.parse! ARGV
+
+  options
+end
+
+begin
+  init_config unless config
+
+  options = parse_options
+
+  quiet = options[:quiet]
+
+  puts "Fetching timecard" unless quiet
+
+  punch = Punch.new(client_id: config[:client])
+  home  = punch.login config[:username], config[:password]
+
+  timecard = punch.fetch_timecard home
+
+  unless quiet
+    puts "Your timecard will look like this:"
+    puts
+    puts timecard.pretty
+    puts
+  end
+
+  case options[:submit]
+  when :none then
+    puts "Timecard will not be saved or approved."
+  when :save then
+    timecard.save
+    puts "Timecard has been saved."
+  when :approve then
+    timecard.approve
+    puts "Timecard has been sent for approval."
+  end
+
+rescue
+  abort $!.message
+end

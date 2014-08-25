@@ -159,6 +159,11 @@ class Punch
       submission_form.submit
     end
 
+    def approve
+      prepare_submission action: :approve
+      submission_form.submit
+    end
+
     def suggest_save_or_approve(todays_date = Date.today)
       todays_date > end_date ? :approve : :save
     end
