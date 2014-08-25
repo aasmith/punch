@@ -1,41 +1,36 @@
 = punch
 
-* FIX (url)
+* http://github.com/aasmith/punch
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Punch manipulates, displays, saves and/or submits your ADP Enterprise
+eTime time cards.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+ * Displays your timecard.
+ * Adds stuff to your timecard.
+ * Saves your timecard.
+ * Submits it for approval.
+
+Timecards seem to be pre-populated with hours, so punch will add the
+missing department code, as set in ~/.punch.yaml.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  $ punch                 # Displays your modified timecard.
+  $ vim ~/.punch.yaml     # Edit config
+  $ punch -submit save    # Saves your timecard to ADP.
+  $ punch -submit approve # Sends your timecard to be approved.
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
-
-== INSTALL:
-
-* FIX (sudo gem install, anything else)
-
-== DEVELOPERS:
-
-After checking out the source, run:
-
-  $ rake newb
-
-This task will install any missing dependencies, run the tests/specs,
-and generate the RDoc.
+* mechanize
 
 == LICENSE:
 
-(The MIT License)
-
-Copyright (c) 2014 FIX
+Copyright (c) 2014 Andrew A. Smith <andy@tinnedfruit.org>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
