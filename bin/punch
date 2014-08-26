@@ -89,10 +89,6 @@ begin
 
   init_config if config.nil? or options[:reinit]
 
-  quiet = options[:quiet]
-
-  puts "Fetching timecard" unless quiet
-
   punch = Punch.new(
            client_id: config[:client],
     user_agent_alias: config[:user_agent_alias]
@@ -103,9 +99,7 @@ begin
   timecard = punch.fetch_timecard home
   timecard.populate(xfer: config[:transfer]) unless options[:pure]
 
-  unless quiet
-    puts "Your timecard will look like this:"
-    puts
+  unless options[:quiet]
     puts timecard.pretty
     puts
   end
