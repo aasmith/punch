@@ -53,6 +53,10 @@ Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
       options[:pure] = value
     end
 
+    opt.on("--re-init", "Reinitialize punch.yaml config") do |value|
+      options[:reinit] = value
+    end
+
     opt.on("--debug", "Enable debug output") do |value|
       $DEBUG = true
     end
@@ -76,9 +80,9 @@ Submission mode:
 end
 
 begin
-  init_config unless config
-
   options = parse_options
+
+  init_config if config.nil? or options[:reinit]
 
   quiet = options[:quiet]
 
