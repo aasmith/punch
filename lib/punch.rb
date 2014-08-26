@@ -39,7 +39,20 @@ class Punch
       f["authenticateWithSecurityQuestion"] = false
     end
 
-    form.submit
+    check_errors form.submit
+  end
+
+  def check_errors(page)
+    # Still showing a login page?
+    if page.frame_with(href: /kronos-logonbody/)
+      frame = page.frame_with(href: /kronos-logonbody/).click
+
+      errors = frame.parser.css("#ErrorMessageDiv").join("\n")
+
+      fail errors.empty? ? "Unable to log in" : errors
+    else
+      page
+    end
   end
 
   def fetch_timecard(home_page)
