@@ -16,13 +16,15 @@ class Punch
   # host can also be specified. If a URL is provided, all other args
   # are ignored.
 
-  def initialize(client_id: nil, host: HOST, url: nil)
+  def initialize(client_id: nil, host: HOST, url: nil, user_agent_alias: nil)
     fail "Need client_id or url" unless client_id or url
 
     self.url = url || URL % [host || HOST, client_id]
 
     @agent = Mechanize.new do |a|
       a.ssl_version = :TLSv1
+      a.user_agent_alias = user_agent_alias ||
+        self.class.random_user_agent_alias
     end
   end
 
@@ -58,6 +60,13 @@ class Punch
   def fetch_timecard(home_page)
     nav = home_page.iframe("contentPane").click
     Timecard.new nav.link_with(text: "My Timecard").click
+  end
+
+  USER_AGENT_ALIASES =
+    Mechanize::AGENT_ALIASES.keys.grep(/(mac|win).*?(firefox|chrome|mozilla)/i)
+
+  def self.random_user_agent_alias
+    USER_AGENT_ALIASES.sample
   end
 
   # A wrapper around a Mechanize::Page that contains a timecard form.
