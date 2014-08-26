@@ -504,8 +504,8 @@ window['com.kronos.context'] = {
   
 	<td>
 	
-		<input id = "com.kronos.context:person-id" type = "hidden" value = "123456789" xmlns:personality="com.kronos.wfc.commonapp.people.business.personality.Personality" personality:fullName="Smith, Andrew">
-		Smith, Andrew (DJL003107)
+		<input id = "com.kronos.context:person-id" type = "hidden" value = "123456789" xmlns:personality="com.kronos.wfc.commonapp.people.business.personality.Personality" personality:fullName="Derpington, Derp">
+		Derpington, Derp (DERP123)
 	
 	</td>
 	<td>&nbsp;</td>
