@@ -3,13 +3,13 @@ Derpington, Derp (DERP123)
 
 Period 2014-08-16 to 2014-08-31
 
-Week 0
+Week 32
 ------
 Dept: Regular
 Xfer: -
 Sat 2014-08-16: None
 
-Week 1
+Week 33
 ------
 Dept: Regular
 Xfer: -
@@ -21,7 +21,7 @@ Thu 2014-08-21: 8:00
 Fri 2014-08-22: 8:00
 Sat 2014-08-23: None
 
-Week 2
+Week 34
 ------
 Dept: Regular
 Xfer: -
@@ -33,7 +33,7 @@ Thu 2014-08-28: 8:00
 Fri 2014-08-29: 8:00
 Sat 2014-08-30: None
 
-Week 3
+Week 35
 ------
 Dept: Regular
 Xfer: -

@@ -232,7 +232,7 @@ HEADER
 
         if current_week != week
           out << ""
-          out << "Week #{week}"
+          out << "Week #{current_date.strftime("%U")}"
           out << "------"
           current_week = week
         end
