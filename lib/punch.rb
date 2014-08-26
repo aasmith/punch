@@ -181,6 +181,10 @@ class Punch
       todays_date > end_date ? :approve : :save
     end
 
+    def employee_name_and_info
+      page.parser.css(".CPerson td:first").text.strip
+    end
+
     def pretty
       out = []
 
@@ -188,8 +192,16 @@ class Punch
         field.name =~ /T\d+R\d+C\d+/
       end
 
-      out << "Timecard for Employee %s (%s-%s)" % [
+      header = <<HEADER.chomp
+Timecard for Employee %s
+%s
+
+Period %s to %s
+HEADER
+
+      out << header % [
         employee_id,
+        employee_name_and_info,
         start_date,
         end_date
       ]

@@ -1,4 +1,7 @@
-Timecard for Employee 123456789 (2014-08-16-2014-08-31)
+Timecard for Employee 123456789
+Smith, Andrew (DJL003107)
+
+Period 2014-08-16 to 2014-08-31
 
 Week 0
 ------
