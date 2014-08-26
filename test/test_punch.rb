@@ -69,16 +69,16 @@ class TestPunch < Minitest::Test
     assert_equal serialized_fields, cmd.value
   end
 
-  def test_suggest_save_or_approve
+  def test_too_early?
     load_example_timecard
 
     too_soon   = @timecard.end_date - 1
     too_eager  = @timecard.end_date
     just_right = @timecard.end_date + 1
 
-    assert_equal :save,    @timecard.suggest_save_or_approve(too_soon)
-    assert_equal :save,    @timecard.suggest_save_or_approve(too_eager)
-    assert_equal :approve, @timecard.suggest_save_or_approve(just_right)
+    assert @timecard.too_early?(too_soon)
+    assert @timecard.too_early?(too_eager)
+    refute @timecard.too_early?(just_right)
   end
 
   def load_example_timecard

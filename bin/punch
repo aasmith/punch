@@ -58,6 +58,10 @@ Manipulates, displays, saves and/or approves ADP Enterprise eTime time cards.
       options[:reinit] = value
     end
 
+    opt.on("--risky", "Allow premature submission. Risky!") do |value|
+      options[:risky] = value
+    end
+
     opt.on("--debug", "Enable debug output") do |value|
       $DEBUG = true
     end

@@ -181,13 +181,18 @@ class Punch
       submission_form.submit
     end
 
-    def approve
+    def approve!
       prepare_submission action: :approve
       submission_form.submit
     end
 
-    def suggest_save_or_approve(todays_date = Date.today)
-      todays_date > end_date ? :approve : :save
+    def approve
+      fail "Timecard should not be submitted before period end" if too_early?
+      approve!
+    end
+
+    def too_early?(todays_date = Date.today)
+      todays_date <= end_date
     end
 
     def employee_name_and_info
