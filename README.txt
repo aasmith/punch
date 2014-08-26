@@ -19,10 +19,11 @@ missing department code, as set in ~/.punch.yaml.
 
 == SYNOPSIS:
 
-  $ punch                 # Displays your modified timecard.
-  $ vim ~/.punch.yaml     # Edit config
-  $ punch -submit save    # Saves your timecard to ADP.
-  $ punch -submit approve # Sends your timecard to be approved.
+  $ punch                  # First run will initialize your config file.
+  $ vim ~/.punch.yaml      # Edit config
+  $ punch                  # Displays your timecard to be submitted.
+  $ punch --submit=save    # Saves your timecard to ADP.
+  $ punch --submit=approve # Sends your timecard to be approved.
 
 If you need to share your config will colleagues, remove the password!
 
