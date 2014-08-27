@@ -111,7 +111,7 @@ begin
     timecard.save
     puts "Timecard has been saved."
   when :approve then
-    timecard.approve
+    options[:risky] ? timecard.approve! : timecard.approve
     puts "Timecard has been sent for approval."
   end
 
