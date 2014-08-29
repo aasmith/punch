@@ -199,6 +199,10 @@ class Punch
       page.parser.css(".CPerson td:first").text.strip
     end
 
+    def messages
+      page.parser.css(".MessageBar div").map { |m| m.text.strip }
+    end
+
     def pretty
       out = []
 
@@ -206,19 +210,22 @@ class Punch
         field.name =~ /T\d+R\d+C\d+/
       end
 
-      header = <<HEADER.chomp
+      header = <<HEADER
 Timecard for Employee %s
 %s
 
 Period %s to %s
+
+%s
 HEADER
 
-      out << header % [
+      out << (header % [
         employee_id,
         employee_name_and_info,
         start_date,
-        end_date
-      ]
+        end_date,
+        messages.map{ |m| " * #{m}" }.join("\n")
+      ]).rstrip
 
       current_date = start_date
       current_week = nil
